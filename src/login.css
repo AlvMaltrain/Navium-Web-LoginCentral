@@ -22,42 +22,33 @@ body {
 .login-screen {
   min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image:
-    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(242, 180, 14, 0.12) 0%, transparent 55%),
-    linear-gradient(150deg, rgba(48, 57, 100, 0.42) 0%, rgba(36, 41, 72, 0.52) 100%),
-    url('/src/assets/navium-fondo.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 2rem;
 }
 
-/* ── Tarjeta dividida ───────────────────────────────────────────────────── */
+/* ── Tarjeta dividida (pantalla completa) ───────────────────────────────── */
 .login-card {
   display: flex;
   width: 100%;
-  max-width: 830px;
-  min-height: 500px;
+  min-height: 100vh;
   background: transparent;
-  border-radius: 1.5rem;
   overflow: hidden;
-  box-shadow: 0 25px 60px -12px rgba(48, 57, 100, 0.60),
-              0 8px 24px -8px rgba(0, 0, 0, 0.2);
 }
 
 /* ── Panel izquierdo (branding) ─────────────────────────────────────────── */
 .login-aside {
-  flex: 1 1 44%;
+  flex: 1 1 50%;
   position: relative;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 4.4rem 3rem 3.5rem;
-  background: linear-gradient(150deg, rgba(48, 57, 100, 1.2) 0%, rgba(36, 41, 72, 1.2) 100%);
+  padding: 11rem 3rem 3.5rem;
+  background:
+    linear-gradient(150deg, rgba(48, 57, 100, 0.82) 0%, rgba(36, 41, 72, 0.88) 100%),
+    url('/src/assets/navium-fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   color: var(--color-white);
 }
 
@@ -93,7 +84,7 @@ body {
   z-index: 1;
   text-align: center;
   font-family: var(--font-family-sans);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 0.04em;
   color: var(--color-gray-400);
 }
@@ -109,14 +100,14 @@ body {
 }
 
 .login-aside__logo {
-  height: 2.8rem;
+  height: 3.3rem;
   width: auto;
   filter: drop-shadow(0 0 16px #f2b40e88);
 }
 
 .login-aside__title {
   font-family: var(--font-family-accent);
-  font-size: 2.1rem;
+  font-size: 2.6rem;
   line-height: 1.05;
   letter-spacing: 0.04em;
   color: var(--color-white);
@@ -125,16 +116,16 @@ body {
 
 .login-aside__text {
   font-family: var(--font-family-sans);
-  font-size: 0.80rem;
+  font-size: 0.95rem;
   line-height: 1.65;
   color: var(--color-gray-200);
-  max-width: 300px;
+  max-width: 360px;
   margin-top: -1.2rem;
 }
 
 /* ── Panel derecho (formulario) ─────────────────────────────────────────── */
 .login-panel {
-  flex: 1 1 56%;
+  flex: 1 1 50%;
   position: relative;
   display: flex;
   flex-direction: column;
