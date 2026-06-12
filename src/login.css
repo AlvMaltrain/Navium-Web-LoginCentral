@@ -1,0 +1,270 @@
+/* ── Variables (requiere navium-ui-lib.cjs.css) ─────────────────────────── */
+:root {
+  --bg-app:       var(--color-gray-100);
+  --border:       var(--color-gray-200);
+  --border-focus: #f2b40e44;
+  --text-primary: var(--font-color-primary);
+  --text-muted:   var(--color-gray-500);
+  --text-dim:     var(--color-gray-400);
+  --accent:       var(--color-primary);
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg-app);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* ── Pantalla ───────────────────────────────────────────────────────────── */
+.login-screen {
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ── Tarjeta dividida (pantalla completa) ───────────────────────────────── */
+.login-card {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* ── Panel izquierdo (branding) ─────────────────────────────────────────── */
+.login-aside {
+  flex: 1 1 50%;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 11rem 3rem 3.5rem;
+  background:
+    linear-gradient(150deg, rgba(48, 57, 100, 0.82) 0%, rgba(36, 41, 72, 0.88) 100%),
+    url('/src/assets/navium-fondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--color-white);
+}
+
+/* Acento dorado difuminado en la esquina inferior */
+.login-aside::after {
+  content: '';
+  position: absolute;
+  bottom: -150px;
+  left: -110px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #f2b40e22 0%, transparent 70%);
+}
+
+/* Esquinera blanca cóncava en la esquina inferior izquierda del panel azul */
+.login-aside::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 120px;
+  height: 140px;
+  background: radial-gradient(circle at top right, transparent 139px, var(--color-white) 140px);
+  z-index: 0;
+}
+
+.login-aside__footer {
+  position: absolute;
+  bottom: 6.1rem;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  text-align: center;
+  font-family: var(--font-family-sans);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--color-gray-400);
+}
+
+.login-aside__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+
+.login-aside__logo {
+  height: 3.3rem;
+  width: auto;
+  filter: drop-shadow(0 0 16px #f2b40e88);
+}
+
+.login-aside__title {
+  font-family: var(--font-family-accent);
+  font-size: 2.6rem;
+  line-height: 1.05;
+  letter-spacing: 0.04em;
+  color: var(--color-white);
+  white-space: nowrap;
+}
+
+.login-aside__text {
+  font-family: var(--font-family-sans);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--color-gray-200);
+  max-width: 360px;
+  margin-top: -1.2rem;
+}
+
+/* ── Panel derecho (formulario) ─────────────────────────────────────────── */
+.login-panel {
+  flex: 1 1 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.1rem;
+  padding: 3.5rem 3rem;
+  background: var(--color-white);
+}
+
+/* Esquinera azul cóncava en la esquina superior derecha del panel blanco */
+.login-panel::after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 122px;
+  height: 142px;
+  background: radial-gradient(circle at bottom left, transparent 139px, var(--color-secondary) 140px);
+  z-index: 0;
+}
+
+/* El contenido del formulario queda por encima de la esquinera */
+.login-panel > * {
+  position: relative;
+  z-index: 1;
+}
+
+.login-panel__title {
+  font-family: var(--font-family-accent);
+  font-size: 2.4rem;
+  color: var(--color-secondary);
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-align: center;
+}
+
+.login-sub {
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-top: -1.9rem;
+  margin-bottom: 0.4rem;
+  text-align: center;
+}
+
+/* ── Enlace "olvidaste contraseña" ──────────────────────────────────────── */
+.login-forgot {
+  align-self: flex-start;
+  margin-top: -0.8rem;
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.login-forgot:hover {
+  color: var(--accent);
+}
+
+/* ── Botón de envío ─────────────────────────────────────────────────────── */
+.login-submit {
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: var(--border-radius-full) !important;
+  color: #fff !important;
+  font-weight: var(--font-weight-medium) !important;
+}
+
+.login-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ── Campos de formulario ───────────────────────────────────────────────── */
+.field-label {
+  display: block;
+  font-size: 0.70rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-family: var(--font-family-sans);
+  margin-left: 0.6rem;
+}
+
+.field-input {
+  width: 100%;
+  background: var(--color-white);
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--border-radius-full);
+  color: var(--text-primary);
+  font-family: var(--font-family-sans);
+  font-size: var(--font-size-base);
+  padding: 0.7rem 1.15rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.field-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--border-focus);
+}
+
+.field-input::placeholder { color: var(--text-dim); }
+
+/* ── Alerta ─────────────────────────────────────────────────────────────── */
+.alert {
+  width: 100%;
+  border-radius: var(--border-radius-md);
+  border: 1px solid;
+  font-size: var(--font-size-sm);
+  font-family: var(--font-family-sans);
+  padding: 0.75rem 1rem;
+}
+
+.alert--error { background: #fef2f2; border-color: #fecaca; color: #b91c1c; }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .login-card {
+    flex-direction: column;
+    max-width: 440px;
+    min-height: 0;
+  }
+
+  .login-aside {
+    padding: 2.5rem 2rem;
+    flex-basis: auto;
+  }
+
+  .login-aside__title { font-size: 2.2rem; }
+
+  .login-panel {
+    padding: 2.5rem 2rem;
+    flex-basis: auto;
+  }
+}
